@@ -1,0 +1,25 @@
+.Board {
+  border-radius: 10px;
+  background: #EBECF0;
+  padding: 12px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.Board__header {
+  color: #000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  overflow-y: auto;
+  max-height: 100%;
+}
