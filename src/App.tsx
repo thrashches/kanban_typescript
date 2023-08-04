@@ -9,10 +9,18 @@ import {initialTasks} from "./data/dataMock";
 
 function App() {
     const [tasks, setTasks] = useState<ITask[]>(initialTasks);
+
+    const addTask = (task: ITask): void => {
+        // Создание новой задачи
+        const maxId = Math.max(...tasks.map((task) => task.id));
+        task.id = maxId + 1;
+        setTasks([...tasks, task]);
+    };
+
     return (
         <div className="App">
             <Header/>
-            <Layout tasks={tasks}/>
+            <Layout tasks={tasks} addTask={addTask}/>
             <Footer tasks={tasks}/>
         </div>
     );

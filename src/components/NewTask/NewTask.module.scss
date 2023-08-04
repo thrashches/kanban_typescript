@@ -1,0 +1,37 @@
+.NewTask {
+  border-radius: 5px;
+  background: #FFF;
+  padding: 8px;
+
+  input {
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #000;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+  }
+}
+
+.submit {
+  border-radius: 5px;
+  background: #0079BF;
+  color: #FFF;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: fit-content;
+  border: none;
+  padding: 4px 15px;
+  transition: 250ms;
+}
+
+.submit:hover {
+  background: #0067A3;
+}

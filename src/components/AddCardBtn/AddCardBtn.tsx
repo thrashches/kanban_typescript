@@ -6,11 +6,13 @@ import {ITask} from "../../data/types";
 
 type AddCardProps = {
     boardTitle: "backlog"|"ready"|"inProgress"|"finished",
+    onClick: () => void,
     tasks?: ITask[],
 }
 
 export default function AddCardBtn(props: AddCardProps) {
-    return <button className={style.AddCardBtn}>
+    const {onClick} = props;
+    return <button className={style.AddCardBtn} onClick={onClick}>
         <AddIcon/>
         Add card
     </button>
