@@ -10,9 +10,9 @@ export default function Layout(props: LayoutProps) {
     const {tasks} = props;
 
     return <section className={style.Layout}>
-        <Board boardTitle={"Backlog"} tasks={tasks.filter((task) => task.status === 'backlog')}/>
-        <Board boardTitle={"Ready"} tasks={tasks.filter((task) => task.status === 'ready')}/>
-        <Board boardTitle={"In progress"} tasks={tasks.filter((task) => task.status === 'inProgress')}/>
-        <Board boardTitle={"Finished"} tasks={tasks.filter((task) => task.status === 'finished')}/>
+        <Board boardTitle={"backlog"} tasks={tasks.filter((task) => task.status === 'backlog')}/>
+        <Board boardTitle={"ready"} tasks={tasks.filter((task) => task.status === 'ready')}/>
+        <Board boardTitle={"inProgress"} tasks={tasks.filter((task) => task.status === 'inProgress')}/>
+        <Board boardTitle={"finished"} tasks={tasks.filter((task) => task.status === 'finished')}/>
     </section>
 }

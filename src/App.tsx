@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <Header/>
             <Layout tasks={tasks}/>
-            <Footer/>
+            <Footer tasks={tasks}/>
         </div>
     );
 }
