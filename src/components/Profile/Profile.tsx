@@ -5,7 +5,7 @@ import {ReactComponent as ArrowIcon} from "./Arrow.svg";
 
 
 export default function Profile() {
-    const [dropdownCollapsed, setDropdownCollapsed] = useState(true);
+    const [dropdownCollapsed, setDropdownCollapsed] = useState<boolean>(true);
 
     const handleProfileClick = () => {
         setDropdownCollapsed(!dropdownCollapsed);
