@@ -1,5 +1,6 @@
 .AddCardBtn {
   all: unset;
+  border-radius: 5px;
   padding: 4px;
   cursor: pointer;
   color: #5E6C84;
@@ -16,6 +17,10 @@
 }
 
 .AddCardBtn:hover {
-  border-radius: 5px;
   background: #FFF;
+}
+
+.AddCardBtn:disabled {
+  background: #DEDEDE;
+  cursor: not-allowed;
 }

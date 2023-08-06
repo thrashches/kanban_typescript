@@ -17,11 +17,15 @@
   margin-top: 0;
 }
 
+.Board__footer {
+  margin-top: 15px;
+}
+
 .Tasks {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 15px;
-  overflow-y: auto;
-  max-height: 100%;
+
+  height: 100%;
 }

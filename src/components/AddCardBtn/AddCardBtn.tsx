@@ -5,14 +5,14 @@ import {ITask} from "../../data/types";
 
 
 type AddCardProps = {
-    boardTitle: "backlog"|"ready"|"inProgress"|"finished",
+    boardTitle: "backlog" | "ready" | "inProgress" | "finished",
     onClick: () => void,
     tasks?: ITask[],
 }
 
 export default function AddCardBtn(props: AddCardProps) {
-    const {onClick} = props;
-    return <button className={style.AddCardBtn} onClick={onClick}>
+    const {boardTitle, onClick, tasks} = props;
+    return <button className={style.AddCardBtn} onClick={onClick} disabled={!tasks?.length && boardTitle !== "backlog"}>
         <AddIcon/>
         Add card
     </button>

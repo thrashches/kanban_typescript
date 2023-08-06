@@ -1,10 +1,57 @@
-.Dropdown {
+.Dropdown__switch {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
   border-radius: 5px;
   background: #FFF;
+  min-height: 35px;
+  padding: 4px 8px;
+  color: #000;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Dropdown__switch__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.Dropdown__switch::after {
+  background: url("Arrow.svg");
+}
+
+.Dropdown__list {
+  z-index: 1;
+  position: absolute;
+  top: 42px;
+  border-radius: 5px;
+  background: #FFF;
+  min-height: 35px;
+  max-height: 175px;
+  width: calc(25vw - 52px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.Dropdown__wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .DropdownTask {
+  all: unset;
+  cursor: pointer;
+  min-height: 35px;
+  padding: 8px;
+}
 
+.DropdownTask:hover {
+  background: #DEDEDE;
 }
 
 .submit {
@@ -21,6 +68,7 @@
   border: none;
   padding: 4px 15px;
   transition: 250ms;
+  margin-top: 15px;
 }
 
 .submit:hover {

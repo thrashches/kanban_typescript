@@ -4,22 +4,32 @@ import style from "./Dropdown.module.scss";
 
 
 type DropdownProps = {
+    boardTitle: "backlog" | "ready" | "inProgress" | "finished",
     tasks: ITask[],
+    setShowDropdown: (value: boolean) => void,
+    moveTask: (task: ITask, target: "backlog" | "ready" | "inProgress" | "finished") => void,
 }
 
 type DropdownTaskProps = {
     task: ITask,
-    select: (task: ITask) => void,
+    selectTask: (task: ITask) => void,
+    setDropdownCollapsed: (state: boolean) => void,
 }
 
 
 const DropdownTask = (props: DropdownTaskProps) => {
-    const {task, select} = props;
-    return <div className={style.DropdownTask}>{task.title}</div>
+    const {task, selectTask, setDropdownCollapsed} = props;
+    const handleSelect = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        selectTask(task);
+        console.log(task);
+        setDropdownCollapsed(true);
+    }
+    return <div className={style.DropdownTask} onClick={handleSelect}>{task.title}</div>
 }
 
 export default function Dropdown(props: DropdownProps) {
-    const {tasks} = props;
+    const {boardTitle, tasks, setShowDropdown, moveTask} = props;
     const [dropdownCollapsed, setDropdownCollapsed] = useState<boolean>(true);
     const [selectedTask, setSelectedTask] = useState<ITask | null>(null);
 
@@ -28,16 +38,36 @@ export default function Dropdown(props: DropdownProps) {
         setDropdownCollapsed(!dropdownCollapsed);
     };
 
-    const dropdownElements = tasks.map((task, index) => <DropdownTask task={task} key={index} select={selectTask}/>);
+    const handleBlur = () => {
+        setDropdownCollapsed(true);
+    }
 
-    return <>
-        <div className={style.Dropdown} onClick={handleCollapseClick}>
-            {selectedTask ? selectedTask.title : <></>}
+    const dropdownElements = tasks.map((task, index) => <DropdownTask
+        task={task}
+        key={index}
+        selectTask={selectTask}
+        setDropdownCollapsed={setDropdownCollapsed}
+    />);
+
+    const handleSubmit = () => {
+        if (selectedTask && boardTitle) {
+            moveTask(selectedTask, boardTitle);
+            setSelectedTask(null);
+        }
+        setShowDropdown(false);
+    }
+
+    return <div className={style.Dropdown__wrapper}>
+        <div className={style.Dropdown__switch__wrapper}>
+            <button className={style.Dropdown__switch} onClick={handleCollapseClick}>
+                {selectedTask ? selectedTask.title : <></>}
+            </button>
+            {dropdownCollapsed ? <></> : <div className={style.Dropdown__list}>
+                {dropdownElements}
+            </div>}
         </div>
-        {dropdownCollapsed ? <></> : <div className={style.Dropdown}>
-            {dropdownElements}
-        </div>}
 
-        <button className={style.submit}>Submit</button>
-    </>
+
+        <button className={style.submit} onClick={handleSubmit}>Submit</button>
+    </div>
 }

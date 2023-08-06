@@ -17,10 +17,15 @@ function App() {
         setTasks([...tasks, task]);
     };
 
+    const moveTask = (task: ITask, target: "backlog" | "ready" | "inProgress" | "finished") => {
+        task.status = target;
+        setTasks([...tasks.filter((t) => t.id !== task.id), task]);
+    }
+
     return (
         <div className="App">
             <Header/>
-            <Layout tasks={tasks} addTask={addTask}/>
+            <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>
             <Footer tasks={tasks}/>
         </div>
     );
