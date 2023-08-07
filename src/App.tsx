@@ -10,7 +10,10 @@ import Layout from "./components/Layout/Layout";
 import {ITask} from "./data/types";
 import {TaskStorage} from "./data/storage";
 import TaskDetail, {loader as taskLoader} from "./pages/TaskDetail/TaskDetail";
+import ErrorElem from "./components/ErrorElem/ErrorElem";
 
+
+const baseUrl: string = "/";
 
 function App() {
     const taskStorage = new TaskStorage();
@@ -18,7 +21,11 @@ function App() {
 
     const addTask = (task: ITask): void => {
         // Создание новой задачи
-        const maxId = Math.max(...tasks.map((task) => task.id));
+        let maxId = Math.max(...tasks.map((task) => task.id));
+        console.log(maxId)
+        if (!tasks.length) {
+            maxId = 0;
+        }
         task.id = maxId + 1;
         setTasks([...tasks, task]);
     };
@@ -33,16 +40,20 @@ function App() {
     }
 
     const router = createBrowserRouter([
-        {
-            path: "/",
-            element: <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>,
-        },
-        {
-            path: "tasks/:taskId",
-            element: <TaskDetail updateTask={updateTask}/>,
-            loader: taskLoader,
-        }
-    ]);
+            {
+                path: "/",
+                element: <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>,
+                errorElement: <ErrorElem baseUrl={baseUrl} />,
+            },
+            {
+                path: "tasks/:taskId",
+                loader: taskLoader,
+                element: <TaskDetail updateTask={updateTask}/>,
+                errorElement: <ErrorElem baseUrl={baseUrl} />,
+            }
+        ],
+        {basename: baseUrl},
+    );
 
     useEffect(() => {
         setTasks(taskStorage.getTasks());
@@ -54,7 +65,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header/>
+            <Header baseUrl={baseUrl}/>
             <RouterProvider router={router}/>
             <Footer tasks={tasks}/>
         </div>

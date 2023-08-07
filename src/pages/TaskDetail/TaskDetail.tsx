@@ -16,6 +16,12 @@ type TaskDetailProps = {
 export async function loader({params}: LoaderFunctionArgs) {
     const taskStorage = new TaskStorage();
     const task = taskStorage.getTask(params.taskId);
+    if (!task) {
+        throw new Response("", {
+            status: 404,
+            statusText: "Not Found",
+        });
+    }
     return {task};
 }
 
