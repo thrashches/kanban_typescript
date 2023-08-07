@@ -43,13 +43,13 @@ function App() {
             {
                 path: "/",
                 element: <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>,
-                errorElement: <ErrorElem baseUrl={baseUrl} />,
+                errorElement: <ErrorElem baseUrl={baseUrl}/>,
             },
             {
                 path: "tasks/:taskId",
                 loader: taskLoader,
                 element: <TaskDetail updateTask={updateTask}/>,
-                errorElement: <ErrorElem baseUrl={baseUrl} />,
+                errorElement: <ErrorElem baseUrl={baseUrl}/>,
             }
         ],
         {basename: baseUrl},

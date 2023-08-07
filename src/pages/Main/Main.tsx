@@ -11,5 +11,5 @@ type MainProps = {
 
 export default function Main(props: MainProps) {
     const {tasks, addTask, moveTask} = props;
-    return <Layout tasks={tasks} addTask={addTask} moveTask={moveTask} />
+    return <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>
 }

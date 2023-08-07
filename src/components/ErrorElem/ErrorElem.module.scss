@@ -9,10 +9,16 @@
   gap: 35px;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .Error__wrapper {
   padding: 27px;
-  margin-bottom: auto;
-  height: calc(100vh - 250px);
+}
+
+@media (min-height: 960px) {
+  .Error__wrapper {
+    height: calc(100vh - 250px);
+    margin-bottom: auto;
+  }
 }
