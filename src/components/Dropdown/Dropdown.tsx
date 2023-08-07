@@ -39,10 +39,6 @@ export default function Dropdown(props: DropdownProps) {
         setDropdownCollapsed(!dropdownCollapsed);
     };
 
-    const handleBlur = () => {
-        setDropdownCollapsed(true);
-    }
-
     const dropdownElements = tasks.map((task, index) => <DropdownTask
         task={task}
         key={index}

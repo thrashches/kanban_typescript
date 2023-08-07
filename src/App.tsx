@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Layout from "./components/Layout/Layout";
 import {ITask} from "./data/types";
 import {TaskStorage} from "./data/storage";
-import TaskDetail, {loader as taskLoader} from "./pages/TaskDetails/TaskDetails";
+import TaskDetail, {loader as taskLoader} from "./pages/TaskDetail/TaskDetail";
 
 
 function App() {
@@ -28,6 +28,10 @@ function App() {
         setTasks([...tasks.filter((t) => t.id !== task.id), task]);
     }
 
+    const updateTask = (task: ITask) => {
+        setTasks([...tasks.filter((t) => t.id !== task.id), task].sort((a, b) => b.id - a.id));
+    }
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -35,7 +39,7 @@ function App() {
         },
         {
             path: "tasks/:taskId",
-            element: <TaskDetail/>,
+            element: <TaskDetail updateTask={updateTask}/>,
             loader: taskLoader,
         }
     ]);
@@ -51,7 +55,7 @@ function App() {
     return (
         <div className="App">
             <Header/>
-                <RouterProvider router={router} />
+            <RouterProvider router={router}/>
             <Footer tasks={tasks}/>
         </div>
     );

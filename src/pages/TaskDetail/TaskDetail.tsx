@@ -9,13 +9,18 @@ type TaskDetailLoaderType = {
     task: ITask,
 }
 
+type TaskDetailProps = {
+    updateTask: (task: ITask) => void,
+}
+
 export async function loader({params}: LoaderFunctionArgs) {
     const taskStorage = new TaskStorage();
     const task = taskStorage.getTask(params.taskId);
     return {task};
 }
 
-export default function TaskDetail() {
+export default function TaskDetail(props: TaskDetailProps) {
+    const {updateTask} = props;
     const {task} = useLoaderData() as TaskDetailLoaderType;
-    return <Detail task={task}/>
+    return <Detail task={task} updateTask={updateTask}/>
 }

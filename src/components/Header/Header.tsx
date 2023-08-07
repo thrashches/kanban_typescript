@@ -5,7 +5,7 @@ import Profile from "../Profile/Profile";
 
 export default function Header() {
     return <header className={style.Navbar}>
-        <div className={style.Navbar__logo}>Awesome Kanban Board</div>
+        <a className={style.Navbar__logo} href={"/"}>Awesome Kanban Board</a>
         <Profile/>
     </header>
 }
