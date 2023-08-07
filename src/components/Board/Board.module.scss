@@ -3,7 +3,7 @@
   background: #EBECF0;
   padding: 12px;
   height: fit-content;
-  max-height: calc(100vh - 250px);
+
   //overflow-y: auto;
 }
 
@@ -27,5 +27,15 @@
   justify-content: flex-start;
   gap: 15px;
   overflow-y: auto;
-  max-height: calc(100vh - 400px);
+
+}
+
+@media (min-width: 960px) {
+  .Board {
+    max-height: calc(100vh - 250px);
+  }
+
+  .Tasks {
+    max-height: calc(100vh - 400px);
+  }
 }

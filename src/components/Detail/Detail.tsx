@@ -34,8 +34,7 @@ export default function Detail(props: DetailProps) {
             task.description = description;
             updateTask(task);
             navigate("/");
-        }
-        else {
+        } else {
             alert("Заполните название задачи!");
         }
     }
