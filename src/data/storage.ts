@@ -19,4 +19,14 @@ export class TaskStorage {
     public getTasks(): ITask[] {
         return this.tasks;
     }
+
+    public getTask(taskId: undefined | string): ITask | null {
+        if (taskId) {
+            const tasks = this.tasks.filter((task) => task.id === parseInt(taskId));
+            if (tasks.length) {
+                return tasks[0];
+            }
+        }
+        return null;
+    }
 }

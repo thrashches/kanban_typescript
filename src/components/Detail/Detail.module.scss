@@ -1,0 +1,60 @@
+.Detail {
+  margin: 0;
+  padding: 28px;
+  border-radius: 5px;
+  background: #FFF;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.Detail__wrapper {
+  padding: 27px;
+  margin-bottom: auto;
+  height: calc(100vh - 250px);
+}
+
+.title {
+  all: unset;
+  cursor: text;
+  color: #000;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.description {
+  all: unset;
+  cursor: text;
+  height: 100%;
+  color: #000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.submit {
+  border-radius: 5px;
+  background: #0079BF;
+  color: #FFF;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: fit-content;
+  border: none;
+  padding: 4px 15px;
+  transition: 250ms;
+  margin-top: 15px;
+}
+
+.submit:hover {
+  background: #0067A3;
+}

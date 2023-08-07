@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react';
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
 import './App.scss';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Layout from "./components/Layout/Layout";
 import {ITask} from "./data/types";
 import {TaskStorage} from "./data/storage";
+import TaskDetail, {loader as taskLoader} from "./pages/TaskDetails/TaskDetails";
 
 
 function App() {
@@ -23,6 +28,18 @@ function App() {
         setTasks([...tasks.filter((t) => t.id !== task.id), task]);
     }
 
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>,
+        },
+        {
+            path: "tasks/:taskId",
+            element: <TaskDetail/>,
+            loader: taskLoader,
+        }
+    ]);
+
     useEffect(() => {
         setTasks(taskStorage.getTasks());
     }, []);
@@ -34,7 +51,7 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            <Layout tasks={tasks} addTask={addTask} moveTask={moveTask}/>
+                <RouterProvider router={router} />
             <Footer tasks={tasks}/>
         </div>
     );
