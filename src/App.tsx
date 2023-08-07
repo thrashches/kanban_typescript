@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
+import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import './App.scss';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
