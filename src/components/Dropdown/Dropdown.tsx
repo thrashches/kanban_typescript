@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {ITask} from "../../data/types";
+import {ReactComponent as Arrow} from "./Arrow.svg";
 import style from "./Dropdown.module.scss";
 
 
@@ -60,7 +61,8 @@ export default function Dropdown(props: DropdownProps) {
     return <div className={style.Dropdown__wrapper}>
         <div className={style.Dropdown__switch__wrapper}>
             <button className={style.Dropdown__switch} onClick={handleCollapseClick}>
-                {selectedTask ? selectedTask.title : <></>}
+                <div>{selectedTask ? selectedTask.title : <></>}</div>
+                <Arrow/>
             </button>
             {dropdownCollapsed ? <></> : <div className={style.Dropdown__list}>
                 {dropdownElements}
