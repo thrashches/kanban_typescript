@@ -1,5 +1,7 @@
 import {ITask} from "./types";
 
+
+// Использовалось при тестировании базового функционала на начальном этапе
 const initialTasks: ITask[] = [
     {
         status: "backlog",

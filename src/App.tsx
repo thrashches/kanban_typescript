@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.scss';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Layout from "./components/Layout/Layout";
 import {ITask} from "./data/types";
-import {initialTasks} from "./data/dataMock";
+import {TaskStorage} from "./data/storage";
 
 
 function App() {
-    const [tasks, setTasks] = useState<ITask[]>(initialTasks);
+    const taskStorage = new TaskStorage();
+    const [tasks, setTasks] = useState<ITask[]>(taskStorage.getTasks());
 
     const addTask = (task: ITask): void => {
         // Создание новой задачи
@@ -21,6 +22,14 @@ function App() {
         task.status = target;
         setTasks([...tasks.filter((t) => t.id !== task.id), task]);
     }
+
+    useEffect(() => {
+        setTasks(taskStorage.getTasks());
+    }, []);
+
+    useEffect(() => {
+        taskStorage.updateTasks(tasks);
+    }, [tasks]);
 
     return (
         <div className="App">
